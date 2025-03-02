@@ -1,11 +1,17 @@
 const express = require("express");
-const app = express();
+const path = require("path");
 
+const app = express();
+const PORT = 3000;
+
+// Serve static files (CSS, images, etc.)
+app.use(express.static(path.join(__dirname, "frontend")));
+
+// Route to serve the home page
 app.get("/", (req, res) => {
-  res.send("Welcome to Healifi Server!");
+  res.sendFile(path.join(__dirname, "frontend", "index.html"));
 });
 
-const PORT = 5000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });

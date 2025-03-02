@@ -1,0 +1,114 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #9d70cd, #5989dc);
+    color: white;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Navigation */
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffdd57;
+}
+
+/* Auth Links */
+.auth-links {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: white;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+.auth-links a:hover {
+    color: #ffdd57;
+}
+
+/* Main Section */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+/* Left Content */
+.content {
+    max-width: 500px;
+}
+
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Right Image */
+.hero-image img {
+    width: 400px;
+    max-width: 100%;
+}
+
+/* 📌 Responsive Styles */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .auth-links {
+        margin-top: 10px;
+    }
+
+    main {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero-image img {
+        width: 300px;
+        margin-top: 20px;
+    }
+}
