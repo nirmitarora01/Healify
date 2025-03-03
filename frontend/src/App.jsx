@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
 import "./App.css";
 import './components/Chatbot.css';
+import Appointment from "./components/Appointment";
+import Navbar from "./components/NavBar";
 
 const App = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -14,25 +16,25 @@ const App = () => {
 
   return (
     <Router>
-        <div>
-          {/* Define routes for the app */}
+      <div>
+        <Navbar />
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/appointment" element={<Appointment />} />
           </Routes>
+        </main>
 
-      {/* Chatbot toggle button */}
-      <button 
-            className="chat-toggle-btn" 
-            onClick={toggleChat}  // Toggle the chatbot visibility
-          >
-            Chat
-          </button>
+        <button 
+          className="chat-toggle-btn" 
+          onClick={toggleChat}
+        >
+          Chat
+        </button>
 
-          {/* Chatbot component, visible only when isChatOpen is true */}
-          {isChatOpen && <Chatbot />}
+        {isChatOpen && <Chatbot />}
       </div>
-      </Router>
-    
+    </Router>
   );
 };
 

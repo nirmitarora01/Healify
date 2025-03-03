@@ -4,6 +4,7 @@ const cors = require("cors");
 const chatbotRoutes = require('./chatbot/chatbotRoutes');
 const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
+const appointmentRoutes = require("./routes/appointments");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,13 +25,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/healify", {
 
 app.use("/api/auth", authRoutes);
 
-// Import routes
-// const appointmentRoutes = require("./routes/appointments");
-// const doctorRoutes = require("./routes/doctors");
-
-// // Use routes
-// app.use("/api/appointments", appointmentRoutes);
-// app.use("/api/doctors", doctorRoutes);
+// Use routes
+app.use("/api/appointments", appointmentRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Healifi Backend!");

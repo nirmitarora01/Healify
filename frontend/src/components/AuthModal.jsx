@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./AuthModal.css";
 
-const AuthModal = ({ onClose }) => {
+const AuthModal = ({ onClose, onLoginSuccess }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +40,7 @@ const AuthModal = ({ onClose }) => {
           password,
         });
 
-        alert(`Welcome ${res.data.role}! Login successful.`);
+        onLoginSuccess(res.data.user); // Pass user data to parent
         onClose(); // Close modal after success
       } else {
         // Signup Request
