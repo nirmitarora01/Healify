@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">{/* <img src={logo} alt="Healifi Logo" /> */}</div>
+      <div className="logo"><img src={logo} alt="Healifi Logo" /></div>
       <ul className="nav-links">
         <li>
           <a href="#home">Home</a>
