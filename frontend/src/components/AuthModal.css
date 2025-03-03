@@ -1,0 +1,152 @@
+/* Modal Background */
+.auth-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.auth-modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  width: 380px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideUp 0.3s ease-in-out;
+}
+
+.auth-modal-content h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Input Fields */
+.auth-modal-content input {
+  width: 92%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.auth-modal-content input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* Buttons */
+.auth-modal-content button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: linear-gradient(to right, #ff9f00, #ff3d00);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.auth-modal-content button:hover {
+  background: linear-gradient(to right, #ff3d00, #ff9f00);
+  transform: scale(1.05);
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #666;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #ff3d00;
+}
+
+/* Toggle Login/Signup Text */
+.toggle-text {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #007bff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-text:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 15px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Password Field with Eye Icon */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 35px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #666;
+  transition: 0.3s;
+}
+
+.eye-icon:hover {
+  color: #007bff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
