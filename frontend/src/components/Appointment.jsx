@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Appointment.css';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Appointment = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  // Redirect if not logged in
+  if (!user) {
+    navigate('/');
+    return null;
+  }
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

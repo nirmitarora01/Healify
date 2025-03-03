@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
 import logo from "../assets/logo.jpg";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const openAuthModal = (signup = false) => {
     setIsSignup(signup);
@@ -19,12 +21,9 @@ const Navbar = () => {
     setIsAuthOpen(false);
   };
 
-  const handleLoginSuccess = (userData) => {
-    setUser(userData);
-  };
-
   const handleLogout = () => {
-    setUser(null);
+    logout();
+    navigate('/');
   };
 
   const toggleNav = () => {
@@ -99,7 +98,6 @@ const Navbar = () => {
           isOpen={isAuthOpen}
           isSignup={isSignup}
           onClose={closeAuthModal}
-          onLoginSuccess={handleLoginSuccess}
         />
       )}
     </nav>

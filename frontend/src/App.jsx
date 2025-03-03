@@ -6,6 +6,8 @@ import "./App.css";
 import './components/Chatbot.css';
 import Appointment from "./components/Appointment";
 import Navbar from "./components/NavBar";
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -15,26 +17,35 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div>
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/appointment" element={<Appointment />} />
-          </Routes>
-        </main>
+    <AuthProvider>
+      <Router>
+        <div>
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route 
+                path="/appointment" 
+                element={
+                  <ProtectedRoute>
+                    <Appointment />
+                  </ProtectedRoute>
+                } 
+              />
+            </Routes>
+          </main>
 
-        <button 
-          className="chat-toggle-btn" 
-          onClick={toggleChat}
-        >
-          Chat
-        </button>
+          <button 
+            className="chat-toggle-btn" 
+            onClick={toggleChat}
+          >
+            Chat
+          </button>
 
-        {isChatOpen && <Chatbot />}
-      </div>
-    </Router>
+          {isChatOpen && <Chatbot />}
+        </div>
+      </Router>
+    </AuthProvider>
   );
 };
 
