@@ -1,0 +1,19 @@
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .logo-image {
+    width: 70px;  /* Adjust this value to your preferred size */
+    height: auto;
+    object-fit: contain;
+    border-radius: 20%;
+}
+  
+  /* For responsive design, you might want to add media queries */
+  @media (max-width: 768px) {
+    .logo-image {
+      width: 100px;  /* Slightly smaller on mobile devices */
+    }
+  }

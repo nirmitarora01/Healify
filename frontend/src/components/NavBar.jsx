@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo3.png";
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
+import './NavBar.css';
 
 const Navbar = () => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -32,7 +33,10 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="logo">{/* <img src={logo} alt="Healifi Logo" /> */}</div>
+
+     <div className="logo">
+        <img src={logo} alt="Healifi Logo" className="logo-image" />
+      </div>
       
       <div className="hamburger" onClick={toggleNav}>
         {isNavOpen ? <FaTimes /> : <FaBars />}
