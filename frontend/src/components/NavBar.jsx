@@ -34,8 +34,10 @@ const Navbar = () => {
   return (
     <nav className="navbar">
 
+
      <div className="logo">
         <img src={logo} alt="Healifi Logo" className="logo-image" />
+
       </div>
       
       <div className="hamburger" onClick={toggleNav}>
