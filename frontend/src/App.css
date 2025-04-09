@@ -92,19 +92,83 @@ body {
   color: #2a6bd1;
 }
 
-/* Responsive Navbar */
+/* Add new styles for responsive navbar */
+.hamburger {
+  display: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Update media queries */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-content {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: linear-gradient(90deg, #4c8bf5, #2a6bd1);
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 20px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-content.active {
+    right: 0;
+  }
+
   .nav-links {
-    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
   }
 
   .nav-buttons {
     flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
 
   .nav-btn {
-    width: 120px;
+    width: 150px;
+    text-align: center;
   }
+}
+
+/* Add overlay when mobile menu is open */
+@media (max-width: 768px) {
+  .nav-content.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+}
+
+/* Ensure main content doesn't shift when modal is open */
+body.modal-open {
+  overflow: hidden;
 }
 
 /* Hero Section */
@@ -484,4 +548,45 @@ html {
   font-size: 1.2rem;
   color: #333;
   line-height: 1.6;
+}
+
+main {
+  /* padding-top: 80px; Adjust this value based on your navbar height */
+  min-height: calc(100vh - 80px);
+}
+
+.chat-toggle-btn {
+  z-index: 1000;
+}
+
+/* Add these styles to your existing navbar styles */
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 16px;
+}
+
+.user-info svg {
+  font-size: 18px;
+}
+
+.logout-btn {
+  background: #ff4757;
+  border: none;
+}
+
+.logout-btn:hover {
+  background: #ff6b81;
+  color: white;
+  border: none;
+}
+
+/* Update media query for mobile view */
+@media (max-width: 768px) {
+  .user-info {
+    margin-bottom: 15px;
+  }
 }

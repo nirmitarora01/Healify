@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./AuthModal.css";
+import { useAuth } from '../context/AuthContext';
 
 const AuthModal = ({ onClose }) => {
+  const { login } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,8 +42,8 @@ const AuthModal = ({ onClose }) => {
           password,
         });
 
-        alert(`Welcome ${res.data.role}! Login successful.`);
-        onClose(); // Close modal after success
+        login(res.data.user); // Use the login function from context
+        onClose();
       } else {
         // Signup Request
         const res = await axios.post(`${API_BASE_URL}/api/auth/register`, {
