@@ -1,0 +1,177 @@
+/* Modal Background */
+.review-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Modal Content */
+  .review-modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 450px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideUp 0.3s ease-in-out;
+    text-align: center;
+  }
+  
+  /* Close Button */
+  .review-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #666;
+    transition: 0.3s;
+  }
+  
+  .review-close:hover {
+    color: #ff3d00;
+  }
+  
+  /* Review Heading */
+  .review-modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Review List */
+  .review-list {
+    margin-bottom: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #f9f9f9;
+  }
+  
+  /* Individual Review */
+  .review-item {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .review-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Name and Rating */
+  .review-name {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .review-rating {
+    color: #ff9f00;
+    font-size: 18px;
+  }
+  
+  /* Review Text */
+  .review-text {
+    font-size: 15px;
+    color: #444;
+    margin-top: 5px;
+  }
+  
+  /* Review Input */
+  .review-input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+    resize: none;
+  }
+  
+  .review-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+  }
+  
+  /* Media URL Input */
+  .review-media-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  /* Rating Dropdown */
+  .review-rating-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    background: white;
+  }
+  
+  /* Submit Button */
+  .add-review-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #ff9f00, #ff3d00);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  
+  .add-review-btn:hover {
+    background: linear-gradient(to right, #ff3d00, #ff9f00);
+    transform: scale(1.05);
+  }
+  
+  /* Success Message */
+  .success-message {
+    color: green;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  

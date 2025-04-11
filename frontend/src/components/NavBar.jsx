@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
+import ReviewModal from "./ReviewModal";
 import logo from "../assets/logo3.png";
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
@@ -9,6 +10,7 @@ import './NavBar.css';
 const Navbar = () => {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -32,6 +34,7 @@ const Navbar = () => {
   };
 
   return (
+    <>
     <nav className="navbar">
 
 
@@ -57,6 +60,17 @@ const Navbar = () => {
           </li>
           <li>
             <a href="#footer" onClick={() => setIsNavOpen(false)}>Contact</a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsReviewOpen(true);
+              }}
+            >
+              Reviews
+            </a>
           </li>
         </ul>
         
@@ -107,6 +121,8 @@ const Navbar = () => {
         />
       )}
     </nav>
+    {isReviewOpen && <ReviewModal onClose={() => setIsReviewOpen(false)} />}
+    </>
   );
 };
 

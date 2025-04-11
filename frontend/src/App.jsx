@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
+import ReviewForm from "./components/ReviewForm";
+import ReviewList from "./components/ReviewList";
 import "./App.css";
 import './components/Chatbot.css';
 import Appointment from "./components/Appointment";
