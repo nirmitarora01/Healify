@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
 import ReviewModal from "./ReviewModal";
@@ -53,8 +54,22 @@ const Navbar = () => {
             <Link to="/" onClick={() => setIsNavOpen(false)}>Home</Link>
           </li>
           <li>
-            <Link to="/appointment" onClick={() => setIsNavOpen(false)}>Appointments</Link>
-          </li>
+  <a
+    href="#"
+    onClick={(e) => {
+      e.preventDefault();
+      if (user) {
+        navigate("/appointment");
+      } else {
+        setIsSignup(false);
+        setIsAuthOpen(true); // open login modal
+      }
+      setIsNavOpen(false);
+    }}
+  >
+    Appointments
+  </a>
+</li>
           <li>
             <a href="#doctors" onClick={() => setIsNavOpen(false)}>Doctors</a>
           </li>
