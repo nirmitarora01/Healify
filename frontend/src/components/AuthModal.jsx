@@ -42,8 +42,19 @@ const AuthModal = ({ onClose }) => {
           password,
         });
 
-        login(res.data.user); // Use the login function from context
-        onClose();
+        // Store the token for authenticated requests
+        localStorage.setItem("token", res.data.token);
+
+        // Set user in context
+        login(res.data.user);
+
+        // Redirect based on role (optional)
+        if (res.data.user.role === "Admin") {
+          window.location.href = "/admin"; // or use useNavigate if available
+        } else {
+          onClose(); // Just close modal for normal users
+        }
+
       } else {
         // Signup Request
         const res = await axios.post(`${API_BASE_URL}/api/auth/register`, {

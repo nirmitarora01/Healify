@@ -1,9 +1,10 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const User = require("../models/User"); // User Model
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 const router = express.Router();
 
-// Register (First user is admin)
+// Register
 router.post("/register", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -12,8 +13,10 @@ router.post("/register", async (req, res) => {
     if (existingUser)
       return res.status(400).json({ message: "Email already exists!" });
 
-    const userCount = await User.countDocuments();
-    const role = userCount === 0 ? "Admin" : "User"; // First user is Admin, rest are Users
+    let role = "User";
+    if (email === "nirmitarora@gmail.com") {
+      role = "Admin";
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ email, password: hashedPassword, role });
@@ -38,12 +41,20 @@ router.post("/login", async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid email or password!" });
 
-    res.json({ 
-      message: "Login successful!", 
+    // Generate JWT token
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    res.json({
+      message: "Login successful!",
+      token, 
       user: {
         email: user.email,
         role: user.role,
-        name: user.email.split('@')[0] // Using email username as name for now
+        name: user.email.split("@")[0]
       }
     });
   } catch (error) {
