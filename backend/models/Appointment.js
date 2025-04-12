@@ -8,7 +8,7 @@ const AppointmentSchema = new mongoose.Schema({
   phoneNumber: { type: String, required: true },
   doctor: { type: String, required: true },
   date: { type: Date, required: true },
-  status: { type: String, default: 'Pending', enum: ['Pending', 'Confirmed', 'Cancelled'] },
+  status: { type: String, default: 'Pending', enum: ['Pending', 'Accepted', 'Rejected', 'Waiting'] },
   createdAt: { type: Date, default: Date.now }
 });
 
