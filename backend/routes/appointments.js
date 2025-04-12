@@ -23,4 +23,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router; 
+// Update appointment status
+router.patch("/:id/status", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const appointment = await Appointment.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
+
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+
+    res.json({ message: "Status updated successfully", appointment });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating status", error: error.message });
+  }
+});
+
+module.exports = router;

@@ -112,7 +112,7 @@ const Navbar = () => {
                 openAuthModal(false);
                 setIsNavOpen(false);
               }}>
-                Login
+                Login/Sign Up
               </button>
               <button
                 className="nav-btn signup-btn"
