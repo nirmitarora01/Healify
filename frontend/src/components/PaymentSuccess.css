@@ -1,0 +1,75 @@
+.payment-success-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .payment-success-container h2 {
+    color: #28a745; /* Green color for success */
+    margin-bottom: 20px;
+  }
+  
+  .payment-success-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .payment-success-container .appointment-details {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .payment-success-container .appointment-details h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .payment-success-container .appointment-details p {
+    margin-bottom: 8px;
+  }
+  
+  .payment-success-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .payment-success-container button:hover {
+    background-color: #0056b3;
+  }
+
+  .status-badge {
+    padding: 4px 10px;
+    margin-left: 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .status-badge.confirmed {
+    background-color: #28a745; /* green */
+  }
+  
+  .status-badge.pending {
+    background-color: #ffc107; /* yellow */
+  }
+  
+  .status-badge.cancelled {
+    background-color: #dc3545; /* red */
+  }
+  

@@ -47,7 +47,9 @@ const Appointment = () => {
 
     try {
       const response = await axios.post('http://localhost:5000/api/appointments', formData);
-      setMessage('Appointment booked successfully!');
+      setMessage('Appointment booked successfully! Redirecting to payment...');
+      // Navigate to the payment page and pass the appointment data
+      navigate("/payment", { state: { appointment: response.data.appointment } });
       setFormData({
         name: '',
         email: '',
