@@ -10,6 +10,8 @@ const appointmentRoutes = require("./routes/appointments");
 const User = require("./models/User"); // Import User model
 const bcrypt = require("bcryptjs"); // For hashing admin password
 const paymentRoutes = require("./routes/payments"); // Import payment routes
+require("./jobs/reminderJob");
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
