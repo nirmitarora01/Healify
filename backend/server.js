@@ -2,27 +2,24 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const chatbotRoutes = require('./chatbot/chatbotRoutes');
+const chatbotRoutes = require("./chatbot/chatbotRoutes");
 const authRoutes = require("./routes/auth");
 const reviewRoutes = require("./routes/reviews");
 const mongoose = require("mongoose");
 const appointmentRoutes = require("./routes/appointments");
-const User = require("./models/User"); // Import User model
-const bcrypt = require("bcryptjs"); // For hashing admin password
-const paymentRoutes = require("./routes/payments"); // Import payment routes
+const User = require("./models/User");
+const bcrypt = require("bcryptjs");
+const paymentRoutes = require("./routes/payments");
+const doctorRoutes = require("./routes/doctors");
 require("./jobs/reminderJob");
-
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
-app.use(express.json());
-app.use("/uploads", express.static("uploads"));
-
-// Allow frontend to communicate with backend
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(express.json({ limit: "10mb" })); // Increase limit to 10MB
+app.use(express.urlencoded({ extended: true, limit: "10mb" })); // For form data if needed
 
 // Function to auto-create default admin
 const createDefaultAdmin = async () => {
@@ -35,7 +32,7 @@ const createDefaultAdmin = async () => {
     const admin = new User({
       email,
       password: hashedPassword,
-      role: "Admin"
+      role: "Admin",
     });
     await admin.save();
     console.log("✅ Default admin user created.");
@@ -45,25 +42,27 @@ const createDefaultAdmin = async () => {
 };
 
 // Connect to MongoDB and start server
-mongoose.connect("mongodb://127.0.0.1:27017/healify", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(async () => {
-  console.log("✅ MongoDB connected");
-  await createDefaultAdmin(); // Ensure admin is created before server starts
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-  });
-})
-.catch(err => console.error("❌ MongoDB connection error:", err));
+mongoose
+  .connect("mongodb://127.0.0.1:27017/healify", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(async () => {
+    console.log("✅ MongoDB connected");
+    await createDefaultAdmin();
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/chatbot", chatbotRoutes);
-app.use("/api/payments", paymentRoutes); // Use payment routes
+app.use("/api/payments", paymentRoutes);
+app.use("/api/doctors", doctorRoutes);
 
 // Home route
 app.get("/", (req, res) => {
