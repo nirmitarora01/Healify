@@ -7,26 +7,28 @@ const router = express.Router();
 // Register
 router.post("/register", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(400).json({ message: "Email already exists!" });
 
-    let role = "User";
-    if (email === "nirmitarora@gmail.com") {
-      role = "Admin";
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ email, password: hashedPassword, role });
+
+    const newUser = new User({
+      name,
+      email,
+      password: hashedPassword,
+      role: role || "User", // default to 'User' if role not provided
+    });
 
     await newUser.save();
-    res.status(201).json({ message: "User registered successfully!", role });
+    res.status(201).json({ message: "User registered successfully!", role: newUser.role });
   } catch (error) {
     res.status(500).json({ message: "Server error" });
   }
 });
+
 
 // Login
 router.post("/login", async (req, res) => {
@@ -54,7 +56,7 @@ router.post("/login", async (req, res) => {
       user: {
         email: user.email,
         role: user.role,
-        name: user.email.split("@")[0]
+        name: user.name
       }
     });
   } catch (error) {

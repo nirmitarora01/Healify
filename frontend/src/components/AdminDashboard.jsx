@@ -12,6 +12,9 @@ const AdminDashboard = () => {
 
   const statusOptions = ["Pending", "Accepted", "Rejected", "Waiting"];
 
+  // ✅ Get user (admin) details from localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     fetchAppointments();
   }, []);
@@ -89,7 +92,7 @@ const AdminDashboard = () => {
               className="admin-avatar"
             />
             <div className="admin-info">
-              <h2>Hello, <span className="admin-name">Dr. Sam</span></h2>
+              <h2>Hello, <span className="admin-name">{"Dr." + user?.name || "Dr. Nirmit"}</span></h2>
               <p>
                 Welcome to your Admin Dashboard. From here, you can manage appointments,
                 monitor doctor registrations, and oversee platform activity.
@@ -127,7 +130,7 @@ const AdminDashboard = () => {
                 {appointments.map((appointment) => {
                   // Extract department from doctor string
                   const [doctorName, department] = appointment.doctor.split(' - ');
-                  
+
                   return (
                     <tr key={appointment._id}>
                       <td>

@@ -57,10 +57,13 @@ const AuthModal = ({ onClose }) => {
 
       } else {
         // Signup Request
+        // Signup Request
         const res = await axios.post(`${API_BASE_URL}/api/auth/register`, {
           email,
           password,
+          role: email === "nirmitarora@gmail.com" ? "Admin" : "User" // simple check for admin
         });
+
 
         alert(`Signup successful! You are registered as ${res.data.role}.`);
         setIsLogin(true);

@@ -10,8 +10,9 @@ const appointmentRoutes = require("./routes/appointments");
 const User = require("./models/User"); // Import User model
 const bcrypt = require("bcryptjs"); // For hashing admin password
 const paymentRoutes = require("./routes/payments"); // Import payment routes
-require("./jobs/reminderJob");
+const adminRoutes = require("./routes/adminRoutes");
 
+require("./jobs/reminderJob");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -64,6 +65,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 app.use("/api/payments", paymentRoutes); // Use payment routes
+app.use("/api/admins", adminRoutes);
 
 // Home route
 app.get("/", (req, res) => {

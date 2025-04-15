@@ -1,0 +1,125 @@
+/* Background and Layout */
+.add-admin-container {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Right Section */
+  .add-admin-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  /* Form Card */
+  .add-admin-form {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    color: #fff;
+    animation: fadeSlideUp 0.6s ease;
+  }
+  
+  /* Heading */
+  .add-admin-form h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  /* Label and Input Styles */
+  .add-admin-form label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .add-admin-form input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .add-admin-form input:focus {
+    outline: none;
+    background: #fff;
+    box-shadow: 0 0 0 2px #ffffffaa;
+  }
+  
+  /* Button Style */
+  .add-admin-form button {
+    width: 100%;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .add-admin-form button:hover {
+    background: linear-gradient(to right, #0072ff, #00c6ff);
+  }
+  
+  /* Message Styles */
+  .add-admin-message {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .add-admin-message.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .add-admin-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* Animation */
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
