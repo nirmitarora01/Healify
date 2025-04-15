@@ -92,7 +92,7 @@ const AdminDashboard = () => {
               className="admin-avatar"
             />
             <div className="admin-info">
-              <h2>Hello, <span className="admin-name">{"Dr." + user?.name || "Dr. Nirmit"}</span></h2>
+              <h2>Hello, <span className="admin-name">{user?.name ? `Dr. ${user.name}` : "Dr. Nirmit"}</span></h2>
               <p>
                 Welcome to your Admin Dashboard. From here, you can manage appointments,
                 monitor doctor registrations, and oversee platform activity.
