@@ -64,6 +64,8 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 app.use("/api/payments", paymentRoutes); // Use payment routes
+app.use("/api/doctors", doctorRoutes);
+app.use('/api/admins', adminRoutes);
 
 // Home route
 app.get("/", (req, res) => {
