@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Home from "./components/Home";
 import Chatbot from "./components/Chatbot";
 import Appointment from "./components/Appointment";
 import Navbar from "./components/NavBar";
-import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
 import DoctorsPage from "./components/DoctorsPage";
@@ -14,8 +19,8 @@ import AddDoctorPage from "./components/AddDoctorPage";
 import Payment from "./components/Payment";
 import PaymentSuccess from "./components/PaymentSuccess";
 
-import './App.css';
-import './components/Chatbot.css';
+import "./App.css";
+import "./components/Chatbot.css";
 
 const AppContent = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -25,7 +30,12 @@ const AppContent = () => {
     setIsChatOpen((prevState) => !prevState);
   };
 
-  const hideNavbar = ["/admin", "/add-admin", "/add-doctor", "/doctors"].includes(location.pathname);
+  const hideNavbar = [
+    "/admin",
+    "/add-admin",
+    "/add-doctor",
+    "/doctors",
+  ].includes(location.pathname);
 
   return (
     <div>

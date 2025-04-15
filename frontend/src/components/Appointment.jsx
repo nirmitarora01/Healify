@@ -28,9 +28,9 @@ const Appointment = () => {
   const [error, setError] = useState('');
 
   const doctors = [
-    "Dr. Aditi Sharma - Cardiologist",
-    "Dr. Kavita Verma - Pediatrician",
-    "Dr. Rajesh Mehta - Dermatologist"
+    "Dr. Aarav Sharma - Neurologist",
+    "Dr. Riya Mehta - Pediatrician",
+    "Dr. Raj Kapoor - Cardiologist"
   ];
 
   const handleChange = (e) => {
